@@ -812,7 +812,7 @@
         // Initialize
         updateSummary();
 
-        // Add this to your existing script section
+        // WhatsApp
         document.querySelector('.order-now').addEventListener('click', function() {
             // Get form values
             const style = document.querySelector('.style-option.selected').textContent.trim();
@@ -821,7 +821,7 @@
             const music = document.querySelector('.music-option.selected div').textContent;
             const requests = document.querySelector('textarea').value;
             const price = document.querySelector('.price').textContent;
-            
+
             // Create WhatsApp message
             const message = `New FuseFace AI Order:\n\n` +
                             `Style: ${style}\n` +
@@ -830,12 +830,15 @@
                             `Special Requests: ${requests || 'None'}\n` +
                             `Total Price: ${price}\n\n` +
                             `Please confirm this order.`;
-            
+
             // Encode for WhatsApp URL
             const encodedMessage = encodeURIComponent(message);
-            
-            // Open WhatsApp with the message
-            window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+
+            // Specify target WhatsApp number (with country code, no + or 0)
+            const whatsappNumber = '989024645653'; // Replace with your number
+
+            // Open WhatsApp with the target number and message
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         });
     </script>
 </body>
