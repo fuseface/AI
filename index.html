@@ -613,27 +613,27 @@
                     <div class="quality-options">
                         <div class="quality-option" data-quality="4k60">
                             <div class="res">4K</div>
-                            <div class="fps">60 FPS</div>
+                            <div class="fps">60fps</div>
                         </div>
                         <div class="quality-option selected" data-quality="4k30">
                             <div class="res">4K</div>
-                            <div class="fps">30 FPS</div>
+                            <div class="fps">30fps</div>
                         </div>
                         <div class="quality-option" data-quality="1080p60">
                             <div class="res">1080p</div>
-                            <div class="fps">60 FPS</div>
+                            <div class="fps">60fps</div>
                         </div>
                         <div class="quality-option" data-quality="1080p30">
                             <div class="res">1080p</div>
-                            <div class="fps">30 FPS</div>
+                            <div class="fps">30fps</div>
                         </div>
                         <div class="quality-option" data-quality="720p60">
                             <div class="res">720p</div>
-                            <div class="fps">60 FPS</div>
+                            <div class="fps">60fps</div>
                         </div>
                         <div class="quality-option" data-quality="720p30">
                             <div class="res">720p</div>
-                            <div class="fps">30 FPS</div>
+                            <div class="fps">30fps</div>
                         </div>
                     </div>
                 </div>
@@ -686,7 +686,7 @@
                     </div>
                     <div class="summary-item">
                         <div class="label">Quality:</div>
-                        <div class="value">4K @30fps</div>
+                        <div class="value">4K@30fps</div>
                     </div>
                     <div class="summary-item">
                         <div class="label">Music:</div>
@@ -817,7 +817,7 @@
             // Get form values
             const style = document.querySelector('.style-option.selected').textContent.trim();
             const quality = document.querySelector('.quality-option.selected .res').textContent + 
-                           " @" + document.querySelector('.quality-option.selected .fps').textContent;
+                           "@" + document.querySelector('.quality-option.selected .fps').textContent;
             const music = document.querySelector('.music-option.selected div').textContent;
             const requests = document.querySelector('textarea').value;
             const price = document.querySelector('.price').textContent;
