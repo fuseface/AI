@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuseFace AI - Create Your AI Fusion Videos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5649d1;
+            --secondary: #00cec9;
+            --dark: #2d3436;
+            --light: #f7f9fc;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #ff7675;
+            --radius: 16px;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 14px rgba(108, 92, 231, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(108, 92, 231, 0.5);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .hero-video-preview {
+            max-width: 300px;
+            margin: 30px auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .hero-video-preview video {
+            width: 100%;
+            display: block;
+        }
+        
+        .hero-video-preview::after {
+            content: "AI FUSION PREVIEW";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+        
+        /* Order Form */
+        .order-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .order-container {
+                grid-template-columns: 1fr 350px;
+            }
+        }
+        
+        .order-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+        }
+        
+        .section-title i {
+            background: rgba(108, 92, 231, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: var(--radius);
+            padding: 40px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 10px;
+        }
+        
+        .upload-area p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .upload-area input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .style-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+        
+        .style-option {
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .style-option:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .style-option.selected {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.05);
+        }
+        
+        .style-option i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .quality-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        
+        .quality-option {
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quality-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .quality-option.selected {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.05);
+        }
+        
+        .quality-option .res {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .quality-option .fps {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .music-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        
+        .music-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .music-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .music-option.selected {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.05);
+        }
+        
+        .music-option i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 30px;
+            height: fit-content;
+        }
+        
+        .summary-title {
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .price-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+        
+        .price-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .summary-items {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .summary-item .value {
+            font-weight: 500;
+        }
+        
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 15px 0;
+            border-top: 2px solid #f0f0f0;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        .order-now {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 16px rgba(108, 92, 231, 0.4);
+        }
+        
+        .order-now:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+        }
+        
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 206, 201, 0.1);
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .guarantee i {
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+            
+            .order-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">FuseFace AI</div>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn btn-outline">How It Works</button>
+                    <button class="btn btn-primary">My Account</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Your Face Into AI Art</h1>
+            <p>Upload your photo and create stunning AI Fusion videos where your face blends with animals, fantasy creatures, and more!</p>
+            
+            <div class="hero-video-preview">
+                <video autoplay loop muted playsinline>
+                    <source src="#" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="order-container">
+            <div class="order-form">
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Your Photo</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Your Face Photo</h3>
+                        <p>Click or drag a high-quality front-facing photo</p>
+                        <p class="small">JPG, PNG - Max 10MB</p>
+                        <input type="file" id="photoUpload" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-paint-brush"></i> Fusion Style</h2>
+                    <div class="style-options">
+                        <div class="style-option selected" data-style="animal">
+                            <i class="fas fa-paw"></i>
+                            <div>Animal Fusion</div>
+                        </div>
+                        <div class="style-option" data-style="superhero">
+                            <i class="fas fa-mask"></i>
+                            <div>Superhero</div>
+                        </div>
+                        <div class="style-option" data-style="fantasy">
+                            <i class="fas fa-dragon"></i>
+                            <div>Fantasy</div>
+                        </div>
+                        <div class="style-option" data-style="cyber">
+                            <i class="fas fa-robot"></i>
+                            <div>Cyberpunk</div>
+                        </div>
+                        <div class="style-option" data-style="historical">
+                            <i class="fas fa-landmark"></i>
+                            <div>Historical</div>
+                        </div>
+                        <div class="style-option" data-style="cartoon">
+                            <i class="fas fa-film"></i>
+                            <div>Cartoon</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-video"></i> Video Quality</h2>
+                    <div class="quality-options">
+                        <div class="quality-option" data-quality="4k60">
+                            <div class="res">4K</div>
+                            <div class="fps">60 FPS</div>
+                        </div>
+                        <div class="quality-option selected" data-quality="4k30">
+                            <div class="res">4K</div>
+                            <div class="fps">30 FPS</div>
+                        </div>
+                        <div class="quality-option" data-quality="1080p60">
+                            <div class="res">1080p</div>
+                            <div class="fps">60 FPS</div>
+                        </div>
+                        <div class="quality-option" data-quality="1080p30">
+                            <div class="res">1080p</div>
+                            <div class="fps">30 FPS</div>
+                        </div>
+                        <div class="quality-option" data-quality="720p60">
+                            <div class="res">720p</div>
+                            <div class="fps">60 FPS</div>
+                        </div>
+                        <div class="quality-option" data-quality="720p30">
+                            <div class="res">720p</div>
+                            <div class="fps">30 FPS</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-music"></i> Background Music</h2>
+                    <div class="music-options">
+                        <div class="music-option selected" data-music="epic">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Epic Cinematic</div>
+                        </div>
+                        <div class="music-option" data-music="electronic">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Electronic</div>
+                        </div>
+                        <div class="music-option" data-music="rock">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Rock Adventure</div>
+                        </div>
+                        <div class="music-option" data-music="ambient">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Ambient</div>
+                        </div>
+                        <div class="music-option" data-music="none">
+                            <i class="fas fa-ban"></i>
+                            <div>No Music</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-tools"></i> Special Requests</h2>
+                    <textarea class="form-control" rows="4" placeholder="Any specific requests? (e.g. specific animal, effects, text overlays, etc.)"></textarea>
+                </div>
+            </div>
+            
+            <div class="order-summary">
+                <h2 class="summary-title">Your Order Summary</h2>
+                
+                <div class="price-display">
+                    <div class="price-label">Total Price</div>
+                    <div class="price">€49.99</div>
+                    <div class="price-label">(VAT included)</div>
+                </div>
+                
+                <div class="summary-items">
+                    <div class="summary-item">
+                        <div class="label">Video Style:</div>
+                        <div class="value">Animal Fusion</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Quality:</div>
+                        <div class="value">4K @30fps</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Music:</div>
+                        <div class="value">Epic Cinematic</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="label">Processing:</div>
+                        <div class="value">24-48 hours</div>
+                    </div>
+                </div>
+                
+                <div class="total">
+                    <div>Total:</div>
+                    <div>€49.99</div>
+                </div>
+                
+                <button class="order-now">
+                    <i class="fas fa-bolt"></i> Create My Video Now
+                </button>
+                
+                <div class="guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>14-day satisfaction guarantee. Unlimited revisions until you love your AI Fusion video!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="logo-text">FuseFace AI</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+                <a href="#">Examples</a>
+            </div>
+            
+            <p>&copy; 2023 FuseFace AI. All rights reserved. Unleash your creativity with AI-powered video fusion.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Style selection
+        document.querySelectorAll('.style-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.style-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                updateSummary();
+            });
+        });
+        
+        // Quality selection
+        document.querySelectorAll('.quality-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.quality-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                updateSummary();
+            });
+        });
+        
+        // Music selection
+        document.querySelectorAll('.music-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.music-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                updateSummary();
+            });
+        });
+        
+        // Upload area interaction
+        const uploadArea = document.getElementById('uploadArea');
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary)';
+            uploadArea.style.backgroundColor = 'rgba(108, 92, 231, 0.05)';
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ddd';
+            uploadArea.style.backgroundColor = 'transparent';
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ddd';
+            uploadArea.style.backgroundColor = 'transparent';
+            // Handle file upload
+        });
+        
+        // Update order summary
+        function updateSummary() {
+            const style = document.querySelector('.style-option.selected').textContent.trim();
+            const quality = document.querySelector('.quality-option.selected .res').textContent + 
+                           " @" + document.querySelector('.quality-option.selected .fps').textContent;
+            const music = document.querySelector('.music-option.selected div').textContent;
+            
+            // Update summary items
+            document.querySelector('.summary-item:nth-child(1) .value').textContent = style;
+            document.querySelector('.summary-item:nth-child(2) .value').textContent = quality;
+            document.querySelector('.summary-item:nth-child(3) .value').textContent = music;
+            
+            // Update price based on selections
+            let basePrice = 39.99;
+            
+            // Adjust price based on quality
+            const qualityEl = document.querySelector('.quality-option.selected');
+            if (qualityEl.dataset.quality.includes('4k')) basePrice += 10;
+            if (qualityEl.dataset.quality.includes('60')) basePrice += 5;
+            
+            // Format price
+            document.querySelector('.price').textContent = `€${basePrice.toFixed(2)}`;
+            document.querySelector('.total div:last-child').textContent = `€${basePrice.toFixed(2)}`;
+        }
+        
+        // Initialize
+        updateSummary();
+    </script>
+</body>
+</html>
