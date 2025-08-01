@@ -1,3 +1,15 @@
+    
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -566,73 +578,121 @@
     
     <div class="container">
         <div class="order-container">
-
-
-
-
-
-
-
-
-
-            
-           <div class="order-form">
-    <form action="https://formsubmit.co/skohansal.ir.dev@gmail.com" method="POST" enctype="multipart/form-data">
-        <!-- Add these hidden fields for better email formatting -->
-        <input type="hidden" name="_subject" value="New FuseFace AI Order">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-        
-        <!-- Your existing form sections -->
-        <div class="form-section">
-            <h2 class="section-title"><i class="fas fa-user"></i> Your Photo</h2>
-            <div class="upload-area" id="uploadArea">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h3>Upload Your Face Photo</h3>
-                <p>Click or drag a high-quality front-facing photo</p>
-                <p class="small">JPG, PNG - Max 10MB</p>
-                <input type="file" id="photoUpload" name="photo" accept="image/*">
-            </div>
-        </div>
-        
-        <!-- Add hidden fields for other form data -->
-        <input type="hidden" id="styleInput" name="Video Style">
-        <input type="hidden" id="qualityInput" name="Video Quality">
-        <input type="hidden" id="musicInput" name="Background Music">
-        <input type="hidden" id="priceInput" name="Total Price">
-        
-        <!-- Your other form sections remain the same -->
-        <div class="form-section">
-            <h2 class="section-title"><i class="fas fa-paint-brush"></i> Fusion Style</h2>
-            <div class="style-options">
-                <!-- ... existing style options ... -->
-            </div>
-        </div>
-        
-        <!-- ... rest of your form sections ... -->
-        
-        <div class="form-section">
-            <h2 class="section-title"><i class="fas fa-tools"></i> Special Requests</h2>
-            <textarea class="form-control" name="Special Requests" rows="4" placeholder="Any specific requests?"></textarea>
-        </div>
-        
-        <!-- Change the button to submit type -->
-        <button type="submit" class="order-now">
-            <i class="fas fa-bolt"></i> Create My Video Now
-        </button>
-    </form>
-</div>
-
-
-
-
-
-
-
-
-
-            
+            <form class="order-form" action="https://formsubmit.co/skohansal.ir.dev@gmail.com" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_subject" value="New FuseFace AI Order">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" id="styleInput" name="Video Style">
+                <input type="hidden" id="qualityInput" name="Video Quality">
+                <input type="hidden" id="musicInput" name="Background Music">
+                <input type="hidden" id="priceInput" name="Total Price">
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Your Photo</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Your Face Photo</h3>
+                        <p>Click or drag a high-quality front-facing photo</p>
+                        <p class="small">JPG, PNG - Max 10MB</p>
+                        <input type="file" id="photoUpload" name="photo" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-paint-brush"></i> Fusion Style</h2>
+                    <div class="style-options">
+                        <div class="style-option selected" data-style="animal">
+                            <i class="fas fa-paw"></i>
+                            <div>Animal Fusion</div>
+                        </div>
+                        <div class="style-option" data-style="superhero">
+                            <i class="fas fa-mask"></i>
+                            <div>Superhero</div>
+                        </div>
+                        <div class="style-option" data-style="fantasy">
+                            <i class="fas fa-dragon"></i>
+                            <div>Fantasy</div>
+                        </div>
+                        <div class="style-option" data-style="cyber">
+                            <i class="fas fa-robot"></i>
+                            <div>Cyberpunk</div>
+                        </div>
+                        <div class="style-option" data-style="historical">
+                            <i class="fas fa-landmark"></i>
+                            <div>Historical</div>
+                        </div>
+                        <div class="style-option" data-style="cartoon">
+                            <i class="fas fa-film"></i>
+                            <div>Cartoon</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-video"></i> Video Quality</h2>
+                    <div class="quality-options">
+                        <div class="quality-option" data-quality="4k60">
+                            <div class="res">4K</div>
+                            <div class="fps">60fps</div>
+                        </div>
+                        <div class="quality-option selected" data-quality="4k30">
+                            <div class="res">4K</div>
+                            <div class="fps">30fps</div>
+                        </div>
+                        <div class="quality-option" data-quality="1080p60">
+                            <div class="res">1080p</div>
+                            <div class="fps">60fps</div>
+                        </div>
+                        <div class="quality-option" data-quality="1080p30">
+                            <div class="res">1080p</div>
+                            <div class="fps">30fps</div>
+                        </div>
+                        <div class="quality-option" data-quality="720p60">
+                            <div class="res">720p</div>
+                            <div class="fps">60fps</div>
+                        </div>
+                        <div class="quality-option" data-quality="720p30">
+                            <div class="res">720p</div>
+                            <div class="fps">30fps</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-music"></i> Background Music</h2>
+                    <div class="music-options">
+                        <div class="music-option selected" data-music="epic">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Epic Cinematic</div>
+                        </div>
+                        <div class="music-option" data-music="electronic">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Electronic</div>
+                        </div>
+                        <div class="music-option" data-music="rock">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Rock Adventure</div>
+                        </div>
+                        <div class="music-option" data-music="ambient">
+                            <i class="fas fa-play-circle"></i>
+                            <div>Ambient</div>
+                        </div>
+                        <div class="music-option" data-music="none">
+                            <i class="fas fa-ban"></i>
+                            <div>No Music</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-tools"></i> Special Requests</h2>
+                    <textarea class="form-control" name="Special Requests" rows="4" placeholder="Any specific requests? (e.g. specific animal, effects, text overlays, etc.)"></textarea>
+                </div>
+                
+                <button type="submit" class="order-now">
+                    <i class="fas fa-bolt"></i> Create My Video Now
+                </button>
+            </form>
             
             <div class="order-summary">
                 <h2 class="summary-title">Your Order Summary</h2>
@@ -666,10 +726,6 @@
                     <div>Total:</div>
                     <div>€49.99</div>
                 </div>
-                
-                <button class="order-now">
-                    <i class="fas fa-bolt"></i> Create My Video Now
-                </button>
                 
                 <div class="guarantee">
                     <i class="fas fa-shield-alt"></i>
@@ -745,10 +801,9 @@
             e.preventDefault();
             uploadArea.style.borderColor = '#ddd';
             uploadArea.style.backgroundColor = 'transparent';
-            // Handle file upload
         });
         
-        // Update order summary and hidden fields
+        // Update order summary
         function updateSummary() {
             const style = document.querySelector('.style-option.selected').textContent.trim();
             const quality = document.querySelector('.quality-option.selected .res').textContent + 
@@ -785,3 +840,14 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+    
